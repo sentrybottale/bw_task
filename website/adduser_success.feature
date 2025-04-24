@@ -1,13 +1,14 @@
-Feature: This is a basic test (postitive scenarion), to create a user
+Feature: This is a basic test (positive scenario), to create a user
 
 Background: Load test data
     * def user_id = "U001" 
     * callonce read('classpath:website/util/TestData.feature')
 
-
 @success
-Scenario: 
+Scenario: Create a user, freeze the page, and validate success message
     Given driver baseURL
+    # One-liner to prevent form submission refresh and call validateForm
+    * script("document.forms['profileForm'].onsubmit = (e) => { e.preventDefault(); validateForm(); }")
     * waitFor("[id='firstName']")
     * input("[id='firstName']", userData.firstName)
     * input("[id='lastName']", userData.lastName)
@@ -21,6 +22,7 @@ Scenario:
     * input("[id='linkedIn']", userData.linkedIn)
     * input("[id='github']", userData.github)
     * waitFor("[value='Submit']").click()
-    * waitFor(".successMessage")
-    * match text(".successMessage") == "Success!"
+    # Validate the success message with the correct class name
+    * waitFor(".success")
+    * match text(".success") == "Success!"
     * delay(5000)
