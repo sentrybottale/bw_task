@@ -26,3 +26,31 @@ Scenario: Create a user, freeze the page, and validate success message
     * waitFor(".success")
     * match text(".success") == "Success!"
     * delay(5000)
+
+
+    @passwordMismatch
+Scenario: Attempt to create a user with mismatched passwords and validate error message
+    * def user_id = "U002"
+    * call read('classpath:website/util/TestData.feature')
+    Given driver baseURL
+    # Capture the alert text by overriding window.alert
+    * waitFor("[id='firstName']")
+    * input("[id='firstName']", userData.firstName)
+    * input("[id='lastName']", userData.lastName)
+    * input("[id='email']", userData.email)
+    * input("[id='password']", userData.password)
+    * input("[id='confirmPassword']", userData.confirmPassword)
+    * waitFor("[id='male']").click()
+    * input("[id='dob']", userData.dob)
+    * input("[id='phone']", userData.phone)
+    * input("[id='address']", userData.address)
+    * input("[id='linkedIn']", userData.linkedIn)
+    * input("[id='github']", userData.github)
+    * script("window.alert = (msg) => window.alertText = msg")
+    * waitFor("[value='Submit']").click()
+    # Capture and validate the alert message
+    * def alertText = script("return window.alertText || ''")
+    * match alertText == "Passwords do not match"
+    # Dismiss the alert by clearing the alert text
+    * script("window.alertText = '';")
+    * delay(5000)

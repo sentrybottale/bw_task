@@ -1,6 +1,6 @@
 user_id,firstName,lastName,email,password,confirmPassword,gender,dob,phone,address,linkedIn,github
 U001,John,Doe,john.doe@email.com,Pass123!,Pass123!,Male,15-03-1990,1234567890,123 Main St,https://linkedin.com/in/johndoe,https://github.com/johndoe
-U002,Jane,Smith,jane.smith@email.com,Secure456!,Secure456!,Female,22-07-1995,9876543210,456 Oak Ave,https://linkedin.com/in/janesmith,https://github.com/janesmith
+U002,Jane,Smith,jane.smith@email.com,Secure456!,WrongPass!,Female,22-07-1995,9876543210,456 Oak Ave,https://linkedin.com/in/janesmith,https://github.com/janesmith
 U003,Alex,Johnson,alex.j@email.com,Test789!,Test789!,Prefer not to say,10-11-1985,5551234567,789 Pine Rd,,https://github.com/alexj
 U004,Sarah,Lee,sarah.lee@email.com,MyPass321!,MyPass321!,Female,05-02-1992,4449876543,321 Birch Ln,https://linkedin.com/in/sarahlee,
 U005,Mike,Brown,mike.brown@email.com,Pass654!,Pass654!,Male,30-09-1988,3334567890,654 Cedar Dr,https://linkedin.com/in/mikebrown,https://github.com/mikebrown
