@@ -26,7 +26,7 @@ Scenario: Create a user, freeze the page, and validate success message
     # Validate the success message with the correct class name
     * waitFor(".success")
     * match text(".success") == "Success!"
-    * delay(5000)
+
 
 
 @passwordMismatch
@@ -235,7 +235,6 @@ Scenario: Attempt to create a user with invalid email and validate error message
     * def validationMessage = script("document.forms['profileForm']['email'].validationMessage || ''")
     * match validationMessage contains "Please include an '@' in the email address"
     * print 'Validation message:', validationMessage
-    * delay(5000)
 
 @emptyConfirmPassword
 Scenario: Attempt to create a user with empty confirm password and validate error message
