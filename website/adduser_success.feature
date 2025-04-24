@@ -1,4 +1,4 @@
-Feature: This is a basic test (positive scenario), to create a user
+Feature: This is a test suite, to create a user
 
 Background: 
 
