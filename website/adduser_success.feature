@@ -28,7 +28,7 @@ Scenario: Create a user, freeze the page, and validate success message
     * delay(5000)
 
 
-    @passwordMismatch
+@passwordMismatch
 Scenario: Attempt to create a user with mismatched passwords and validate error message
     * def user_id = "U002"
     * call read('classpath:website/util/TestData.feature')
@@ -49,8 +49,9 @@ Scenario: Attempt to create a user with mismatched passwords and validate error 
     * script("window.alert = (msg) => window.alertText = msg")
     * waitFor("[value='Submit']").click()
     # Capture and validate the alert message
-    * def alertText = script("return window.alertText || ''")
+    * def alertText = script("window.alertText || ''")
     * match alertText == "Passwords do not match"
+    * print 'Alert text:', alertText
     # Dismiss the alert by clearing the alert text
     * script("window.alertText = '';")
     * delay(5000)
